@@ -1,0 +1,1789 @@
+{
+  "karpathy": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleAI",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "kaifulee",
+      "lexfridman",
+      "tesla",
+      "ylecun"
+    ],
+    "mention": [
+      "huggingface"
+    ]
+  },
+  "ylecun": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "ainowinstitute",
+      "bernardmarr",
+      "huggingface",
+      "iainljbrown",
+      "karpathy",
+      "lexfridman"
+    ],
+    "mention": [
+      "GoogleDeepMind"
+    ]
+  },
+  "AndrewYNg": {
+    "follow": [
+      "GoogleDeepMind",
+      "OpenAI",
+      "Scobleizer",
+      "ainowinstitute",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "soumithchintala",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "OpenAI"
+    ]
+  },
+  "OpenAI": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "hadleywickham",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "naval",
+      "togethercompute",
+      "ylecun"
+    ],
+    "mention": []
+  },
+  "GoogleDeepMind": {
+    "follow": [
+      "2morrowknight",
+      "AndrewYNg",
+      "OpenAI",
+      "fabiomoioli",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "sallyeaves",
+      "ylecun"
+    ],
+    "mention": []
+  },
+  "lexfridman": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "rowancheung",
+      "seb_ruder",
+      "wandb",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "nvidia"
+    ]
+  },
+  "huggingface": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "datasociety",
+      "hamelhusain",
+      "karpathy",
+      "lexfridman",
+      "mlflow",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind"
+    ]
+  },
+  "fchollet": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "ainowinstitute",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "reidhoffman",
+      "sama",
+      "ylecun"
+    ],
+    "mention": [
+      "OpenAI",
+      "nvidia"
+    ]
+  },
+  "GoogleAI": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "lukaszkaiser",
+      "openroboticsorg",
+      "wandb",
+      "ylecun"
+    ],
+    "mention": [
+      "nvidia"
+    ]
+  },
+  "AIatMeta": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleAI",
+      "GoogleDeepMind",
+      "OpenAI",
+      "fchollet",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "seattledataguy",
+      "ylecun"
+    ],
+    "mention": [
+      "OpenAI"
+    ]
+  },
+  "goodfellow_ian": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "ceobillionaire",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "lukaszkaiser",
+      "waitin4agi_",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI"
+    ]
+  },
+  "OriolVinyalsML": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "HilaryMason",
+      "Mobileye",
+      "OpenAI",
+      "fchollet",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "huggingface",
+      "nvidia"
+    ]
+  },
+  "demishassabis": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "mlflow",
+      "sriramk",
+      "timnitgebru",
+      "ylecun"
+    ],
+    "mention": [
+      "huggingface"
+    ]
+  },
+  "jeffdean": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "naval",
+      "patrickc",
+      "wandb",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI"
+    ]
+  },
+  "ilyasut": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "Thom_Wolf",
+      "fastdotai",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "soumithchintala",
+      "ylecun"
+    ],
+    "mention": [
+      "OpenAI",
+      "huggingface"
+    ]
+  },
+  "hardmaru": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "iainljbrown",
+      "karpathy",
+      "lexfridman",
+      "openroboticsorg",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "huggingface"
+    ]
+  },
+  "lukaszkaiser": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "mozilla",
+      "patrickc",
+      "rowancheung",
+      "ylecun"
+    ],
+    "mention": [
+      "huggingface",
+      "nvidia"
+    ]
+  },
+  "quocleix": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "iainljbrown",
+      "karpathy",
+      "lexfridman",
+      "seattledataguy",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI"
+    ]
+  },
+  "sama": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "KirkDBorne",
+      "OpenAI",
+      "ceobillionaire",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "mozilla",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "OpenAI"
+    ]
+  },
+  "kaifulee": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "hardmaru",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "quocleix",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "OpenAI",
+      "nvidia"
+    ]
+  },
+  "ID_AA_Carmack": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "gdb",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "lukaszkaiser",
+      "simonw",
+      "ylecun"
+    ],
+    "mention": [
+      "OpenAI",
+      "nvidia"
+    ]
+  },
+  "2morrowknight": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "Mobileye",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "pascal_bornet",
+      "swyx",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "OpenAI",
+      "huggingface"
+    ]
+  },
+  "Scobleizer": {
+    "follow": [
+      "AIatMeta",
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "emilymbender",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "rasbt",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "OpenAI",
+      "nvidia"
+    ]
+  },
+  "drfeifei": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "hamelhusain",
+      "huggingface",
+      "kaifulee",
+      "karpathy",
+      "lexfridman",
+      "simonw",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "OpenAI",
+      "huggingface"
+    ]
+  },
+  "KirkDBorne": {
+    "follow": [
+      "AndrewYNg",
+      "ClaireSilver12",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "ilyasut",
+      "karpathy",
+      "lexfridman",
+      "neptune_ai",
+      "ylecun"
+    ],
+    "mention": [
+      "nvidia"
+    ]
+  },
+  "rowancheung": {
+    "follow": [
+      "AMD",
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "intel",
+      "jerryjliu0",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "nvidia"
+    ]
+  },
+  "antgrasso": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "dharmesh",
+      "erikbryn",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "OpenAI",
+      "nvidia"
+    ]
+  },
+  "Ronald_vanLoon": {
+    "follow": [
+      "AIatMeta",
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "demishassabis",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "paulg",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "GoogleDeepMind",
+      "nvidia"
+    ]
+  },
+  "TamaraMcCleary": {
+    "follow": [
+      "AndrewYNg",
+      "ClaireSilver12",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "twimlai",
+      "waitin4agi_",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind"
+    ]
+  },
+  "erikbryn": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "ilyasut",
+      "karpathy",
+      "lexfridman",
+      "lukaszkaiser",
+      "waitin4agi_",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind"
+    ]
+  },
+  "timnitgebru": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "iainljbrown",
+      "karpathy",
+      "lexfridman",
+      "rasbt",
+      "simonw",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "GoogleDeepMind"
+    ]
+  },
+  "oriolvinyalsml": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "KirkDBorne",
+      "OpenAI",
+      "huggingface",
+      "jerryjliu0",
+      "karpathy",
+      "lexfridman",
+      "tesla",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "OpenAI"
+    ]
+  },
+  "ceobillionaire": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "GregKamradt",
+      "OpenAI",
+      "gdb",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "timnitgebru",
+      "ylecun"
+    ],
+    "mention": [
+      "huggingface"
+    ]
+  },
+  "soumithchintala": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "abhi1thakur",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "patrickc",
+      "pmarca",
+      "ylecun"
+    ],
+    "mention": [
+      "OpenAI",
+      "huggingface",
+      "nvidia"
+    ]
+  },
+  "waitin4agi_": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "balajis",
+      "elonmusk",
+      "huggingface",
+      "jeffdean",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "GoogleDeepMind",
+      "OpenAI"
+    ]
+  },
+  "sallyeaves": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "Mobileye",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "rowancheung",
+      "tesla",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "OpenAI"
+    ]
+  },
+  "bernardmarr": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "emilymbender",
+      "hamelhusain",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "sallyeaves",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "GoogleDeepMind"
+    ]
+  },
+  "fabiomoioli": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "KirkDBorne",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "seb_ruder",
+      "simonw",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "nvidia"
+    ]
+  },
+  "pascal_bornet": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "abhi1thakur",
+      "garrytan",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "tesla",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "OpenAI",
+      "nvidia"
+    ]
+  },
+  "abhi1thakur": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "balajis",
+      "ceobillionaire",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "mlflow",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface"
+    ]
+  },
+  "iainljbrown": {
+    "follow": [
+      "AndrewYNg",
+      "AnthropicAI",
+      "DeepLearningAI",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "twimlai",
+      "ylecun"
+    ],
+    "mention": [
+      "OpenAI",
+      "nvidia"
+    ]
+  },
+  "HaroldSinnott": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleAI",
+      "GoogleDeepMind",
+      "OpenAI",
+      "OriolVinyalsML",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "soumithchintala",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "huggingface",
+      "nvidia"
+    ]
+  },
+  "ClaireSilver12": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "latentspacepod",
+      "lexfridman",
+      "pascal_bornet",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "nvidia"
+    ]
+  },
+  "TheTuringPost": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "demishassabis",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "oriolvinyalsml",
+      "ylecun",
+      "zenml_io"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "GoogleDeepMind",
+      "nvidia"
+    ]
+  },
+  "officiallogank": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "oriolvinyalsml",
+      "sriramk",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "GoogleDeepMind",
+      "huggingface"
+    ]
+  },
+  "AnthropicAI": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "Scobleizer",
+      "elonmusk",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "rasbt",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface"
+    ]
+  },
+  "swyx": {
+    "follow": [
+      "AndrewYNg",
+      "BostonDynamics",
+      "GoogleDeepMind",
+      "OpenAI",
+      "datasociety",
+      "fabiomoioli",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "huggingface"
+    ]
+  },
+  "gdb": {
+    "follow": [
+      "AndrewYNg",
+      "BostonDynamics",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "latentspacepod",
+      "lexfridman",
+      "seattledataguy",
+      "ylecun"
+    ],
+    "mention": [
+      "OpenAI",
+      "huggingface",
+      "nvidia"
+    ]
+  },
+  "jerryjliu0": {
+    "follow": [
+      "2morrowknight",
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "ceobillionaire",
+      "gdb",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI"
+    ]
+  },
+  "GregKamradt": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "chrisalbon",
+      "hadleywickham",
+      "hardmaru",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface"
+    ]
+  },
+  "simonw": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "algorithmwatch",
+      "goodfellow_ian",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "sama",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "OpenAI",
+      "huggingface"
+    ]
+  },
+  "perplexity_ai": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "KirkDBorne",
+      "OpenAI",
+      "drfeifei",
+      "huggingface",
+      "intel",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind"
+    ]
+  },
+  "togethercompute": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "balajis",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "seattledataguy",
+      "waymo",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "OpenAI"
+    ]
+  },
+  "latentspacepod": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "GregKamradt",
+      "OpenAI",
+      "demishassabis",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "simonw",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI"
+    ]
+  },
+  "GroqInc": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "drnic",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "seb_ruder",
+      "waymo",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface"
+    ]
+  },
+  "Thom_Wolf": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "bernardmarr",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "neptune_ai",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "nvidia"
+    ]
+  },
+  "seattledataguy": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "balajis",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "sama",
+      "timnitGebru",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI"
+    ]
+  },
+  "Aurimas_Gr": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "algorithmwatch",
+      "balajis",
+      "hamelhusain",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "huggingface"
+    ]
+  },
+  "jeremyphoward": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "elonmusk",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "pascal_bornet",
+      "twimlai",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI"
+    ]
+  },
+  "fastdotai": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "HaroldSinnott",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "sama",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "huggingface",
+      "nvidia"
+    ]
+  },
+  "rasbt": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "KirkDBorne",
+      "OpenAI",
+      "fastdotai",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "seattledataguy",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "GoogleDeepMind",
+      "OpenAI"
+    ]
+  },
+  "seb_ruder": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "fabiomoioli",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "timnitGebru",
+      "ylecun"
+    ],
+    "mention": [
+      "OpenAI",
+      "huggingface",
+      "nvidia"
+    ]
+  },
+  "chipro": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "HilaryMason",
+      "OpenAI",
+      "antgrasso",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "mozilla",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "nvidia"
+    ]
+  },
+  "eugeneyan": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "HilaryMason",
+      "OpenAI",
+      "huggingface",
+      "intel",
+      "karpathy",
+      "lexfridman",
+      "quocleix",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "nvidia"
+    ]
+  },
+  "koenbok": {
+    "follow": [
+      "AndrewYNg",
+      "ClaireSilver12",
+      "GoogleDeepMind",
+      "HilaryMason",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "tesla",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI"
+    ]
+  },
+  "hadleywickham": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "Mobileye",
+      "OpenAI",
+      "drfeifei",
+      "erikbryn",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI"
+    ]
+  },
+  "HilaryMason": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "KirkDBorne",
+      "OpenAI",
+      "huggingface",
+      "jerryjliu0",
+      "karpathy",
+      "lexfridman",
+      "mozilla",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "nvidia"
+    ]
+  },
+  "chrisalbon": {
+    "follow": [
+      "AndrewYNg",
+      "DeepLearningAI",
+      "GoogleDeepMind",
+      "OpenAI",
+      "drnic",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "wandb",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind"
+    ]
+  },
+  "thomasp85": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "waymo",
+      "ylecun"
+    ],
+    "mention": [
+      "huggingface",
+      "nvidia"
+    ]
+  },
+  "drnic": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "eugeneyan",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "sama",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "OpenAI",
+      "nvidia"
+    ]
+  },
+  "hamelhusain": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "TheTuringPost",
+      "gdb",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "waitin4agi_",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind"
+    ]
+  },
+  "wandb": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "OriolVinyalsML",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "waitin4agi_",
+      "ylecun",
+      "zenml_io"
+    ],
+    "mention": [
+      "nvidia"
+    ]
+  },
+  "neptune_ai": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "emilymbender",
+      "eugeneyan",
+      "huggingface",
+      "ilyasut",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "OpenAI",
+      "nvidia"
+    ]
+  },
+  "mlflow": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "demishassabis",
+      "drnic",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "mozilla",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "huggingface",
+      "nvidia"
+    ]
+  },
+  "zenml_io": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "ID_AA_Carmack",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "paulg",
+      "twimlai",
+      "ylecun"
+    ],
+    "mention": [
+      "OpenAI",
+      "huggingface"
+    ]
+  },
+  "BostonDynamics": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "Mobileye",
+      "OpenAI",
+      "fabiomoioli",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "thomasp85",
+      "ylecun"
+    ],
+    "mention": [
+      "OpenAI",
+      "huggingface"
+    ]
+  },
+  "openroboticsorg": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "Thom_Wolf",
+      "hamelhusain",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "oriolvinyalsml",
+      "ylecun"
+    ],
+    "mention": [
+      "nvidia"
+    ]
+  },
+  "waymo": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "algorithmwatch",
+      "emilymbender",
+      "garrytan",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "GoogleDeepMind",
+      "nvidia"
+    ]
+  },
+  "Mobileye": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "TheTuringPost",
+      "erikbryn",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "sriramk",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind"
+    ]
+  },
+  "nvidia": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "naval",
+      "pmarca",
+      "togethercompute",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "OpenAI"
+    ]
+  },
+  "AMD": {
+    "follow": [
+      "AndrewYNg",
+      "Aurimas_Gr",
+      "GoogleDeepMind",
+      "OpenAI",
+      "chrisalbon",
+      "huggingface",
+      "jerryjliu0",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "nvidia"
+    ]
+  },
+  "intel": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "jeremyphoward",
+      "kaifulee",
+      "karpathy",
+      "lexfridman",
+      "sallyeaves",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "GoogleDeepMind",
+      "huggingface"
+    ]
+  },
+  "tesla": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "ceobillionaire",
+      "demishassabis",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "GoogleDeepMind",
+      "OpenAI"
+    ]
+  },
+  "elonmusk": {
+    "follow": [
+      "AndrewYNg",
+      "BostonDynamics",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "wandb",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "huggingface"
+    ]
+  },
+  "naval": {
+    "follow": [
+      "AndrewYNg",
+      "BostonDynamics",
+      "GoogleDeepMind",
+      "OpenAI",
+      "ceobillionaire",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "soumithchintala",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "GoogleDeepMind",
+      "nvidia"
+    ]
+  },
+  "paulg": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "dharmesh",
+      "huggingface",
+      "jeffdean",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "GoogleDeepMind",
+      "OpenAI"
+    ]
+  },
+  "pmarca": {
+    "follow": [
+      "AMD",
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "OriolVinyalsML",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "soumithchintala",
+      "ylecun"
+    ],
+    "mention": [
+      "huggingface"
+    ]
+  },
+  "reidhoffman": {
+    "follow": [
+      "AndrewYNg",
+      "AnthropicAI",
+      "GoogleAI",
+      "GoogleDeepMind",
+      "OpenAI",
+      "demishassabis",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "GoogleDeepMind",
+      "nvidia"
+    ]
+  },
+  "balajis": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "HilaryMason",
+      "OpenAI",
+      "huggingface",
+      "jeffdean",
+      "karpathy",
+      "lexfridman",
+      "waitin4agi_",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "huggingface"
+    ]
+  },
+  "garrytan": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "abhi1thakur",
+      "eugeneyan",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "paulg",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "GoogleDeepMind",
+      "huggingface"
+    ]
+  },
+  "patrickc": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "ID_AA_Carmack",
+      "OpenAI",
+      "hamelhusain",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "oriolvinyalsml",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind"
+    ]
+  },
+  "dharmesh": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "seb_ruder",
+      "timnitGebru",
+      "ylecun",
+      "zenml_io"
+    ],
+    "mention": [
+      "GoogleDeepMind",
+      "OpenAI",
+      "nvidia"
+    ]
+  },
+  "sriramk": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "latentspacepod",
+      "lexfridman",
+      "sallyeaves",
+      "seb_ruder",
+      "ylecun"
+    ],
+    "mention": [
+      "GoogleDeepMind"
+    ]
+  },
+  "timnitGebru": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "TamaraMcCleary",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "lukaszkaiser",
+      "naval",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI"
+    ]
+  },
+  "emilymbender": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "Thom_Wolf",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "seattledataguy",
+      "swyx",
+      "ylecun"
+    ],
+    "mention": [
+      "OpenAI"
+    ]
+  },
+  "ainowinstitute": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "latentspacepod",
+      "lexfridman",
+      "rasbt",
+      "timnitGebru",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI"
+    ]
+  },
+  "datasociety": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "elonmusk",
+      "goodfellow_ian",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "pmarca",
+      "ylecun"
+    ],
+    "mention": [
+      "OpenAI",
+      "nvidia"
+    ]
+  },
+  "algorithmwatch": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "OriolVinyalsML",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "lukaszkaiser",
+      "tesla",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "huggingface"
+    ]
+  },
+  "mozilla": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "timnitGebru",
+      "togethercompute",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "huggingface",
+      "nvidia"
+    ]
+  },
+  "twimlai": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "TamaraMcCleary",
+      "huggingface",
+      "karpathy",
+      "lexfridman",
+      "quocleix",
+      "sallyeaves",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI"
+    ]
+  },
+  "DeepLearningAI": {
+    "follow": [
+      "AndrewYNg",
+      "GoogleDeepMind",
+      "OpenAI",
+      "TamaraMcCleary",
+      "drnic",
+      "huggingface",
+      "jeremyphoward",
+      "karpathy",
+      "lexfridman",
+      "ylecun"
+    ],
+    "mention": [
+      "AnthropicAI",
+      "OpenAI",
+      "nvidia"
+    ]
+  }
+}
