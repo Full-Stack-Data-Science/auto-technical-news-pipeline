@@ -35,7 +35,7 @@ if [ -z "$EXISTING_ENV" ]; then
     # Fallback to Twitter job's environment if LinkedIn job doesn't exist yet
     EXISTING_ENV=$(az containerapp job show --name twitter-scraping-job --resource-group $RESOURCE_GROUP --query "properties.environmentId" -o tsv 2>/dev/null || echo "")
     if [ -z "$EXISTING_ENV" ]; then
-        echo "❌ Could not determine environment. Please check Twitter job exists."
+        echo "Could not determine environment. Please check Twitter job exists."
         exit 1
     fi
 fi
@@ -62,7 +62,7 @@ if [ $? -eq 0 ]; then
     echo ""
     echo "✓ LinkedIn job deployment completed"
 else
-    echo "❌ Deployment failed"
+    echo "Deployment failed"
     exit 1
 fi
 
@@ -80,7 +80,7 @@ if az containerapp job show --name $LINKEDIN_JOB_NAME --resource-group $RESOURCE
         --resource-group $RESOURCE_GROUP \
         --query "{name:name, provisioningState:properties.provisioningState, environmentId:properties.environmentId, schedule:properties.configuration.scheduleTriggerConfig.cronExpression}" -o json | python3 -m json.tool
 else
-    echo "❌ LinkedIn job not found after deployment"
+    echo "LinkedIn job not found after deployment"
     exit 1
 fi
 
@@ -88,13 +88,3 @@ echo ""
 echo "=================================================="
 echo "LinkedIn Job Deployed Successfully!"
 echo "=================================================="
-
-
-
-
-
-
-
-
-
-

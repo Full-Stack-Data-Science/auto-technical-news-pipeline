@@ -34,7 +34,7 @@ cd "$MAIN_WORKDIR"
 
 # Check Dockerfile
 if [ ! -f "$DOCKERFILE" ]; then
-  echo "❌ Error: Dockerfile not found at $DOCKERFILE"
+  echo "Error: Dockerfile not found at $DOCKERFILE"
   exit 1
 fi
 echo "✓ Dockerfile found"

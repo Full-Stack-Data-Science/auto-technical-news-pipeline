@@ -7,13 +7,6 @@ BICEP="${INFRA_FOLDER}/bicep/main.bicep"
 PARAMS="${INFRA_FOLDER}/bicep/parameters.json" 
 OUTPUT="container-jobs-env-outputs.json"
 
-
-# az identity create \
-#   --name uami-acr-pull \
-#   --resource-group technical-news \
-#   --location southeastasia
-
-
 # DEPLOY JOB
 # -------------------------
 echo "Deploying Container App Job..."
@@ -24,4 +17,4 @@ az deployment group create \
   --parameters $PARAMS
   --name main-$(date +%s) \
 
-echo "✅ Job deployment completed"
+echo "Job deployment completed"
