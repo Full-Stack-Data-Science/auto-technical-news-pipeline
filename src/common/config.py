@@ -1,16 +1,5 @@
 import os
-from pathlib import Path
 from dotenv import load_dotenv
-
-try:
-    env_path = Path(__file__).resolve().parents[2] / '.env'
-    if env_path.exists():
-        load_dotenv(env_path, override=True)
-    src_env_path = Path(__file__).resolve().parents[1] / '.env'
-    if src_env_path.exists():
-        load_dotenv(src_env_path, override=True)
-except ImportError:
-    pass
 
 class Config:    
     PROJECT_ROOT = os.getenv("PROJECT_ROOT", ".")
@@ -34,7 +23,7 @@ class Config:
     USER_NAME =os.getenv("USER_NAME")
     LINKEDIN_EMAIL=os.getenv("LINKEDIN_EMAIL", "dangminhhust193231@gmail.com")
     LINKEDIN_PASSWORD=os.getenv("LINKEDIN_PASSWORD", "...")
-    COOKIE_FILE=f"{COOKIE_PATH}/twitter_cookies.json"
+    TWITTER_COOKIE_FILE=f"{COOKIE_PATH}/twitter_cookies.json"
     LINKEDIN_COOKIE_FILE =f"{COOKIE_PATH}/linkedin_cookies.json"
     SELENIUM_HOST=os.getenv("SELENIUM_HOST", "localhost")
 
