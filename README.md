@@ -347,7 +347,7 @@ In this implementation, trending technical posts are periodically published to [
 
 ## Visualization
 
-![alt text](images/to-pbi.drawio.png)
+![alt text](images/analytics.png)
 
 LinkedIn Scraper and Twitter Scraper collect data and store it in the `bronze/` container on Azure Data Lake Storage Gen2 (ADLS2).
 The storage structure is separated by platform:

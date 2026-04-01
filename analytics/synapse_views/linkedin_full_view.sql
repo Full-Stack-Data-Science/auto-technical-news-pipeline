@@ -2,7 +2,7 @@
 -- GO
 
 CREATE VIEW powerbi.linkedin AS
-WITH ranked_data AS(
+WITH source_data AS(
     SELECT
         COALESCE(content, text) AS content,
         COALESCE(influencer_name, '') AS influencer_name,
@@ -21,15 +21,7 @@ WITH ranked_data AS(
         TRY_CAST(REPLACE(REPLACE(scraped_at, 'T', ' '), 'Z', '') AS DATETIME2) AS date,
         engagement_score,
         author,
-        is_tech_related,
-        ROW_NUMBER() OVER(
-            PARTITION BY activity_id
-            ORDER BY TRY_CAST(REPLACE(REPLACE(scraped_at, 'T', ' '), 'Z', '') AS DATETIME2) DESC
-        ) AS dedup,
-        ROW_NUMBER() OVER(
-            PARTITION BY COALESCE(content, text)
-            ORDER BY TRY_CAST(REPLACE(REPLACE(scraped_at, 'T', ' '), 'Z', '') AS DATETIME2) ASC
-        ) AS dedup_using_content
+        is_tech_related
     FROM OPENROWSET(
         BULK '/linkedin/raw/*.parquet',
         DATA_SOURCE = 'bronze_container',
@@ -55,6 +47,18 @@ WITH ranked_data AS(
         author VARCHAR(50),
         is_tech_related BIT
     ) AS linkedin_source
+),
+ranked_data AS (
+    SELECT *,
+    ROW_NUMBER() OVER(
+        PARTITION BY activity_id
+        ORDER BY date DESC
+    ) AS dedup,
+    ROW_NUMBER() OVER(
+        PARTITION BY content
+        ORDER BY date ASC
+    ) AS dedup_using_content
+    FROM source_data
 )
 SELECT *
 FROM ranked_data
