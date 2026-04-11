@@ -1,5 +1,5 @@
 import networkx as nx
-from celeb_graph.models import RelationshipModel, RelationType
+from celeb_graph.models.relationship import RelationshipModel, RelationType
 
 def build_graph(relationships: RelationshipModel) -> nx.MultiDiGraph:
     """
