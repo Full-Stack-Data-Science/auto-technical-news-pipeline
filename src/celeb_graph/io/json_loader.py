@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from typing import Union
 
-from celeb_graph.models import RelationshipModel
+from celeb_graph.models.relationship import RelationshipModel
 
 def load_from_json(file_path: Union[str, Path]) -> RelationshipModel:
     """

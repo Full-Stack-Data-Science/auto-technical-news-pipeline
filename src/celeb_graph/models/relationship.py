@@ -63,8 +63,7 @@ class RelationshipModel:
                     )
                 for target in targets:
                     model._init_user(target)
-                    model._relations[user][relation_type].add(target)
-
+                    model._relations[user][RelationType(relation_type)].add(target)
         return model
 
     def add(
@@ -93,3 +92,10 @@ class RelationshipModel:
             }
             for source, relation_map in self._relations.items()
         }
+    
+
+model = RelationshipModel.from_dict({
+            "alice": {"follow": ["bob", "carol"], "mention": ["dave"]},
+            "bob":   {"follow": ["carol"],        "mention": []},
+            "carol": {"follow": [],               "mention": ["alice"]},
+        })
