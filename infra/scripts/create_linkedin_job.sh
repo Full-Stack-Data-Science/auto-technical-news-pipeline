@@ -24,7 +24,7 @@ echo "STEP 1: Checking prerequisites..."
 
 # Check if managed identity exists
 if ! az identity show --name $LINKEDIN_IDENTITY_NAME --resource-group $RESOURCE_GROUP &>/dev/null; then
-    echo "⚠️  Managed identity '$LINKEDIN_IDENTITY_NAME' does not exist"
+    echo "Managed identity '$LINKEDIN_IDENTITY_NAME' does not exist"
     echo "Creating managed identity..."
     az identity create \
         --name $LINKEDIN_IDENTITY_NAME \
@@ -50,20 +50,20 @@ az role assignment create \
     --assignee $IDENTITY_PRINCIPAL_ID \
     --role AcrPull \
     --scope $ACR_ID \
-    --output none 2>/dev/null && echo "✓ ACR pull permission granted" || echo "⚠️  Permission may already exist"
+    --output none 2>/dev/null && echo "✓ ACR pull permission granted" || echo "Permission may already exist"
 echo ""
 
 # Step 3: Grant Storage permissions
 echo "STEP 3: Granting Storage permissions..."
 STORAGE_ID=$(az storage account show --name $STORAGE_ACCOUNT --resource-group $RESOURCE_GROUP --query id -o tsv 2>/dev/null || echo "")
 if [ -z "$STORAGE_ID" ]; then
-    echo "⚠️  Storage account not found. Skipping storage permissions."
+    echo "Storage account not found. Skipping storage permissions."
 else
     az role assignment create \
         --assignee $IDENTITY_PRINCIPAL_ID \
         --role "Storage Blob Data Contributor" \
         --scope $STORAGE_ID \
-        --output none 2>/dev/null && echo "✓ Storage permissions granted" || echo "⚠️  Permission may already exist"
+        --output none 2>/dev/null && echo "Storage permissions granted" || echo "Permission may already exist"
 fi
 echo ""
 
@@ -73,7 +73,7 @@ if az acr repository show --name $ACR_NAME --repository linkedin-scraper &>/dev/
     echo "✓ LinkedIn image exists in ACR"
     az acr repository show-tags --name $ACR_NAME --repository linkedin-scraper --output table
 else
-    echo "❌ LinkedIn image not found in ACR"
+    echo "LinkedIn image not found in ACR"
     echo "Please build and push the image first:"
     echo "  ./infra/scripts/build_linkedin_image.sh"
     exit 1
@@ -93,7 +93,7 @@ if [ $? -eq 0 ]; then
     echo ""
     echo "✓ Deployment completed"
 else
-    echo "❌ Deployment failed"
+    echo "Deployment failed"
     exit 1
 fi
 cd "$PROJECT_ROOT"
@@ -111,7 +111,7 @@ if az containerapp job show --name $LINKEDIN_JOB_NAME --resource-group $RESOURCE
         --resource-group $RESOURCE_GROUP \
         --query "{name:name, provisioningState:properties.provisioningState, schedule:properties.configuration.scheduleTriggerConfig.cronExpression}" -o json | python3 -m json.tool
 else
-    echo "❌ LinkedIn job not found after deployment"
+    echo "LinkedIn job not found after deployment"
     exit 1
 fi
 echo ""
@@ -134,16 +134,3 @@ echo ""
 echo "3. View logs:"
 echo "   az containerapp job logs show --name $LINKEDIN_JOB_NAME --resource-group $RESOURCE_GROUP --container scraper --follow"
 echo ""
-
-
-
-
-
-
-
-
-
-
-
-
-

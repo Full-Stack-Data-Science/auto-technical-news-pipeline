@@ -22,7 +22,7 @@ echo ""
 # Check if resource group exists
 echo "Checking resource group..."
 if ! az group show --name $RESOURCE_GROUP &>/dev/null; then
-    echo "❌ Error: Resource group '$RESOURCE_GROUP' does not exist"
+    echo "Error: Resource group '$RESOURCE_GROUP' does not exist"
     echo "Create it with: az group create --name $RESOURCE_GROUP --location southeastasia"
     exit 1
 fi
@@ -74,6 +74,6 @@ EOF
     echo "   cd src && az acr build --registry $ACR_NAME --image twitter-scraper:latest --file Dockerfile ."
     echo ""
 else
-    echo "❌ Deployment failed"
+    echo "Deployment failed"
     exit 1
 fi

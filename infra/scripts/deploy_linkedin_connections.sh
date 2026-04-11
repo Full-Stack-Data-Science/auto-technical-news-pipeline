@@ -42,7 +42,7 @@ if [ -z "$EXISTING_ENV" ]; then
 fi
 
 if [ -z "$EXISTING_ENV" ]; then
-  echo "❌ Could not determine Container Apps Environment. Ensure a LinkedIn or Twitter job already exists."
+  echo "Could not determine Container Apps Environment. Ensure a LinkedIn or Twitter job already exists."
   exit 1
 fi
 
@@ -82,7 +82,7 @@ if az containerapp job show --name "$JOB_NAME" --resource-group "$RESOURCE_GROUP
     --resource-group "$RESOURCE_GROUP" \
     --query "{name:name, provisioningState:properties.provisioningState, environmentId:properties.environmentId, schedule:properties.configuration.scheduleTriggerConfig.cronExpression}" -o json | python3 -m json.tool
 else
-  echo "❌ LinkedIn connections job not found after deployment"
+  echo "LinkedIn connections job not found after deployment"
   exit 1
 fi
 
@@ -90,5 +90,3 @@ echo ""
 echo "=================================================="
 echo "LinkedIn Connections Job Deployed Successfully!"
 echo "=================================================="
-
-

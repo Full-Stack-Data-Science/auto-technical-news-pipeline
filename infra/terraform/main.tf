@@ -11,6 +11,21 @@ provider "azurerm" {
   features {}
 }
 
+locals {
+  names = {
+    servicebus_namespace    = var.servicebus_namespace_name
+    servicebus_topic        = var.servicebus_topic_name
+    servicebus_subscription = var.servicebus_subscription_name
+
+    container_app_env = var.container_app_environment_name
+    container_app_job = var.container_app_job_name
+  }
+
+  job_env = {
+    technical_channel_id = var.technical_channel_id
+  }
+}
+
 
 # data
 data "azurerm_resource_group" "rg" {
@@ -29,15 +44,15 @@ data "azurerm_log_analytics_workspace" "law" {
   resource_group_name = data.azurerm_resource_group.rg.name
 }
 data "azurerm_servicebus_namespace" "sb" {
-  name                = "post-events-ns"
+  name                = local.names.servicebus_namespace
   resource_group_name = data.azurerm_resource_group.rg.name
 }
 data "azurerm_servicebus_topic" "topic" {
-  name         = "new-post-events"
+  name         = local.names.servicebus_topic
   namespace_id = data.azurerm_servicebus_namespace.sb.id
 }
 data "azurerm_servicebus_subscription" "sub" {
-  name     = "logger"
+  name     = local.names.servicebus_subscription
   topic_id = data.azurerm_servicebus_topic.topic.id
 }
 
@@ -50,14 +65,14 @@ resource "azurerm_role_assignment" "sb_receiver" {
 }
 
 resource "azurerm_container_app_environment" "env" {
-  name                = "cae-jobs"
+  name                = local.names.container_app_env
   location            = data.azurerm_resource_group.rg.location
   resource_group_name = data.azurerm_resource_group.rg.name
 
   log_analytics_workspace_id = data.azurerm_log_analytics_workspace.law.id
 }
 resource "azurerm_container_app_job" "job" {
-  name                         = "example-job"
+  name                         = local.names.container_app_job
   location                     = data.azurerm_resource_group.rg.location
   resource_group_name          = data.azurerm_resource_group.rg.name
   container_app_environment_id = azurerm_container_app_environment.env.id
@@ -96,7 +111,7 @@ resource "azurerm_container_app_job" "job" {
   template {
     container {
       name   = "job"
-      image  = "${data.azurerm_container_registry.acr.login_server}/post-publisher:latest"
+      image  = "${data.azurerm_container_registry.acr.login_server}/${var.container_image}"
       cpu    = 2
       memory = "4Gi"
 
@@ -106,10 +121,10 @@ resource "azurerm_container_app_job" "job" {
       }
       env {
         name  = "TECHNICAL_CHANNEL_ID"
-        value = "e0eea093-9d1c-4364-bb7b-e8d17d89e71b"
+        value = local.job_env.technical_channel_id
       }
       env {
-        name  = "FSDS_USERNAME"
+        name        = "FSDS_USERNAME"
         secret_name = "fsds-username"
       }
       env {

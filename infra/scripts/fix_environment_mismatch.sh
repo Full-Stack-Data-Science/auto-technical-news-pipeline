@@ -83,7 +83,7 @@ if [ $? -eq 0 ]; then
     echo ""
     echo "✓ LinkedIn job deployed to $TARGET_ENV"
 else
-    echo "❌ Deployment failed"
+    echo "Deployment failed"
     exit 1
 fi
 
@@ -102,7 +102,7 @@ if [[ "$NEW_ENV" == *"$TARGET_ENV"* ]]; then
     echo "  - Twitter job: $TARGET_ENV"
     echo "  - LinkedIn job: $TARGET_ENV"
 else
-    echo "❌ Verification failed"
+    echo "Verification failed"
     exit 1
 fi
 
