@@ -37,3 +37,5 @@ jobs:
       - name: Run tests (Selenium)
         run: |         
           pytest test/unit/test_celeb_graph.py
+          pytest test/intergration/test_twitter_post_extractor.py
+          pytest test/intergration/test_twitter_profile_extractor.py

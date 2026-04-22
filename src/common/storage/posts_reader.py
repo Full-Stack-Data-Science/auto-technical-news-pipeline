@@ -2,7 +2,7 @@ import io
 import re
 import pandas as pd
 from datetime import date, datetime, timedelta
-from storage.adls_client import ADLSClient
+from common.storage.adls_client import ADLSClient
 
 
 # Support both Twitter and LinkedIn filename patterns

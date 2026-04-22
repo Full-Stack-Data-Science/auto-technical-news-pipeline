@@ -10,7 +10,7 @@ SRC_DIR = ROOT_DIR / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
-from llm.prompt_templates.linkedin_post_summary import build_user_prompt
+from post_writer.llm.prompt_templates.linkedin_post_summary import build_user_prompt
 
 
 class TestLinkedinPostSummaryPrompt(unittest.TestCase):

@@ -1,6 +1,6 @@
 from openai import OpenAI
 
-from llm.base import LLMClient
+from post_writer.llm.base import LLMClient
 from common.config import Config
 
 class ChatGPTClient(LLMClient):

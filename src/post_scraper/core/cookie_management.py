@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 class CookieManager:
     def __init__(self, cookie_file: str) -> None:
-        self.cookie_file = cookie_file
+        self._cookie_file = cookie_file
         os.makedirs(Config.COOKIE_PATH, exist_ok=True)
         self._cache = {}
 
@@ -20,27 +20,27 @@ class CookieManager:
         return self._cache
     
     def load(self):
-        if self._cache is not None:
-            return self._cache
-        return self.load_from_file()
+        if self._cache is None:
+            return self.load_from_file()
+        return self._cache
 
     def load_from_file(self):
-        if not os.path.exists(self.cookie_file):
+        if not os.path.exists(self._cookie_file):
             return []
         cookies = None
-        with open(self.cookie_file, "r") as f:
+        with open(self._cookie_file, "r") as f:
             cookies = json.load(f)
         self._cache = cookies
         return cookies
 
     def save(self, cookies):
         # Create directory if it doesn't exist
-        cookie_dir = os.path.dirname(self.cookie_file)
+        cookie_dir = os.path.dirname(self._cookie_file)
         if cookie_dir and not os.path.exists(cookie_dir):
             os.makedirs(cookie_dir, exist_ok=True)
             logger.info(f"Created cookie directory: {cookie_dir}")
         
-        with open(self.cookie_file, "w") as f:
+        with open(self._cookie_file, "w") as f:
             json.dump(cookies, f)
     
     def has_valid_cookies(self) -> bool:
@@ -59,6 +59,6 @@ class CookieManager:
 
     def clean(self):
         self._cache = None
-        if os.path.exists(self.cookie_file):
-            os.remove(self.cookie_file)
+        if os.path.exists(self._cookie_file):
+            os.remove(self._cookie_file)
             logger.info("Cookie file removed")

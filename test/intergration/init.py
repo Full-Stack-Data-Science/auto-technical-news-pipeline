@@ -1,6 +1,10 @@
 from selenium import webdriver
 from dotenv import load_dotenv
 
+from contextlib import contextmanager
+from selenium import webdriver
+
+@contextmanager
 def create_driver():
     options = webdriver.ChromeOptions()
     options.add_argument("--no-sandbox")
@@ -9,7 +13,10 @@ def create_driver():
     options.add_argument("--headless=new")
 
     driver = webdriver.Chrome(options=options)
-    return driver
+    try:
+        yield driver
+    finally:
+        driver.quit()
 
 def set_test_env_var():
     load_dotenv()

@@ -1,4 +1,5 @@
-from llm.prompt_templates import x_post_summary, linkedin_post_summary
+from post_writer.llm.prompt_templates import x_post_summary
+from post_writer.llm.prompt_templates import linkedin_post_summary
 
 def summerize_X_posts(llm_client, posts):
     messages = [
