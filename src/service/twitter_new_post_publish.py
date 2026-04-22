@@ -6,9 +6,9 @@ from common.config import Config
 from common.utils import render_hashtags_from_topic
 from fsds.meme_poster import MemePoster
 from fsds.session_cookies import get_session_cookies
-from llm.use_cases import summerize_X_posts
-from llm.gpt_client import ChatGPTClient
-from messaging.service_bus_consumer import ServiceBusConsumer
+from post_writer.llm.use_cases import summerize_X_posts
+from post_writer.llm.gpt_client import ChatGPTClient
+from common.messaging.service_bus_consumer import ServiceBusConsumer
 
 CACHE_PATH = Path("published_posts.json")
 openAI_client = ChatGPTClient()

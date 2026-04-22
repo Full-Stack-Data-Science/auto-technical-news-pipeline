@@ -1,5 +1,5 @@
 import re
-from models.keywords import *
+from post_writer.models.keywords import *
 
 from common.utils import setup_logging
 import logging

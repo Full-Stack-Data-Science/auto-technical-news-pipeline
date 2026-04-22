@@ -9,8 +9,8 @@ if str(src_dir) not in sys.path:
     sys.path.insert(0, str(src_dir))
 
 import pandas as pd
-from storage.adls_client import ADLSClient
-from storage.posts_reader import PostRawReader
+from common.storage.adls_client import ADLSClient
+from common.storage.posts_reader import PostRawReader
 from common.config import Config
 from common.utils import setup_logging
 from scraping.core.web_parser import RequestWebParser

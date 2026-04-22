@@ -19,7 +19,7 @@ class Config:
 
     # credential
     TWITTER_EMAIL=os.getenv("TWITTER_EMAIL", "quochungtr99@gmail.com")
-    TWITTER_PASSWORD=os.getenv("TWITTER_PASSWORD", "...")
+    TWITTER_PASSWORD=os.getenv("TWITTER_PASSWORD", "DGWuty99@12345#")
     USER_NAME =os.getenv("USER_NAME")
     LINKEDIN_EMAIL=os.getenv("LINKEDIN_EMAIL", "dangminhhust193231@gmail.com")
     LINKEDIN_PASSWORD=os.getenv("LINKEDIN_PASSWORD", "...")

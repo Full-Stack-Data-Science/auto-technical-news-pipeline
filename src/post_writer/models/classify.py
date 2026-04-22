@@ -1,11 +1,11 @@
 
-from models.rules import (
+from post_writer.models.rules import (
     is_empty,
     is_too_short,
     is_non_technical_rule_based,
     is_ops_mlops_rule_based
 )
-from models.zero_shot import (
+from post_writer.models.zero_shot import (
     is_non_tech_zero_shot,
     classify_zero_shot
 )

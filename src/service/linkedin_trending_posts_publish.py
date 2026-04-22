@@ -11,16 +11,16 @@ import json
 import re
 from datetime import datetime, timedelta, timezone
 
-from storage.adls_client import ADLSClient
-from storage.posts_reader import PostRawReader
+from common.storage.adls_client import ADLSClient
+from common.storage.posts_reader import PostRawReader
 from common.config import Config
 from scraping.linkedin.linkedin_scraper import render_hashtags_from_topic
 from fsds.meme_poster import MemePoster
 from fsds.session_cookies import get_session_cookies
 
-from llm.use_cases import summerize_linkedin_posts
-from llm.gpt_client import ChatGPTClient
-from llm.prompt_templates.linkedin_post_summary import SYSTEM_PROMPT
+from post_writer.llm.use_cases import summerize_linkedin_posts
+from post_writer.llm.gpt_client import ChatGPTClient
+from post_writer.llm.prompt_templates.linkedin_post_summary import SYSTEM_PROMPT
 from scraping.linkedin.linkedin_scraper import LinkedInPostFormatter
 
 logger = logging.getLogger(__name__)

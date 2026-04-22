@@ -3,28 +3,32 @@ import time
 import random
 from datetime import datetime
 
-from typing import Dict, Any, Optional
+from typing import Dict, Any
 
-from common.utils import dump_to_parquet, upload_to_dls, clean_file
+from common.utils import upload_to_dls, clean_file, dump_to_parquet
 from common.config import Config
 from common.utils import setup_logging
-from common.exception import LoginTwitterException
 
-from scraping.core.post_cache import PostCache
-from scraping.twitter.twitter_parser import TwitterParser
-from scraping.core.web_scraper import IWebScraper
-from scraping.twitter.twitter_post_extractor import ExtractTwitterPostException
-from messaging.service_bus_publisher import ServiceBusPublisher
+from post_scraper.core.driver_manager import DriverManager
+from post_scraper.twitter.twitter_session import TwitterSession
+from post_scraper.core.web_scraper import IWebScraper
+from post_scraper.core.post_cache import PostCache
+from post_scraper.twitter.twitter_parser import TwitterParser
+from post_scraper.core.models.post import SocialPost, EnrichedPost
+from celeb_graph.models.relationship import RelationshipModel
+
+
+from common.messaging.service_bus_publisher import ServiceBusPublisher
 from typing import Dict, Any, List
 
-from models.classify import classify_text
+from post_writer.models.classify import classify_text
 
-from network.relation import (
-    RelationshipModel
-)
 
 setup_logging()
 logger = logging.getLogger(__name__)
+
+class ExtractTwitterPostException(Exception):
+    pass
 
 class TwitterPostFormatter:
     """
@@ -42,29 +46,27 @@ class TwitterPostFormatter:
         "Non-technical": "Non-technical",
     }
 
-    def entry_format(self, raw_data: Dict[str, Any]) -> Dict[str, Any]:
-        enriched = raw_data.copy()
-        url = enriched["post_url"]
-        logger.info(f" +---- Format post content for {url}")
-        content = enriched.get("content", "")
+    def entry_format(self, raw_data: SocialPost) -> EnrichedPost:
+        
+        logger.info(f" + Format post content for {raw_data.post_url}")
 
-        topics = self._extract_topics(content)
+        topics = self._extract_topics(raw_data.content)
         industries = self._extract_supported_industries(topics)
 
         is_tech = any(
-            t and t != "Non-technical"
-            for t in topics
+            topic and topic != "Non-technical"
+            for topic in topics
         )
 
-        enriched.update({
-            "topic": topics,
-            "supported_industry": industries,
-            "is_tech_related": is_tech,
-            "scraped_at": datetime.utcnow().isoformat()
-        })
+        enriched_post = EnrichedPost(
+            post=raw_data,
+            topics=topics,
+            supported_industry=industries,
+            is_tech_related=is_tech,
+        )
 
-        logger.info(enriched)
-        return enriched
+        logger.info(enriched_post.to_dict())
+        return enriched_post
 
     
     def _extract_topics(self, content: str) -> List[str]:
@@ -89,31 +91,44 @@ class TwitterPostScraper(IWebScraper):
     
     def __init__(self, 
                  relations: RelationshipModel, 
-                 parser: Optional[TwitterParser] = None, 
-                 formatter: Optional[TwitterPostFormatter] = None,
                  run_in_test: bool = False) -> None:
+        self.run_in_test = run_in_test 
         self.relations = relations
-        parser = parser or TwitterParser(run_in_local=True)
-        formatter = formatter or TwitterPostFormatter()
+        
+        self.driver_manager = DriverManager(headless=self.run_in_test)
+        self.driver_manager.__enter__()
+
+        parser = TwitterParser(self.driver_manager.get())
+        formatter = TwitterPostFormatter()
         self.cache = PostCache("post_cache.json")
+        
         self.publisher = ServiceBusPublisher(
             conn_str= Config.SERVICE_BUS_CONNECTION_STRING,
             topic_name= Config.TWITTER_NEW_POST_TOPIC
         )
-        self.run_in_test = run_in_test 
         super().__init__(parser, formatter)
     
     def __enter__(self):
-        self.parser = self.parser.__enter__()
-        if not self.run_in_test:
-            try:
-                self.parser.login(Config.TWITTER_EMAIL, Config.TWITTER_PASSWORD)
-            except LoginTwitterException as e:
-                logger.error(f"{e}")
+        self._reset()
         return self
 
     def __exit__(self, exc_type, exc, tb):
-        return self.parser.__exit__(exc_type, exc, tb)
+        self.driver_manager.__exit__(exc_type, exc, tb)
+
+    def _reset(self):
+        logger.warning("Resetting full session...")
+
+        self.driver_manager.reset(headless=False)
+        self.session = TwitterSession(self.driver_manager.get())
+
+        if not self.run_in_test:
+            self.session.login(
+                Config.TWITTER_EMAIL,
+                Config.TWITTER_PASSWORD
+            )
+            
+        self.driver_manager.reset(headless=True)
+        self.parser = TwitterParser(self.driver_manager.get())
     
     def _handle_retry(self, err: Exception, retries: int):
         logger.warning(f"Unknown error {err}")
@@ -122,7 +137,7 @@ class TwitterPostScraper(IWebScraper):
                 f"Retrying after {self.RETRY_SLEEP // 60} minutes..."
             )
             time.sleep(self.RETRY_SLEEP)
-            self._reset_parser()
+            self._reset()
         else:
             logger.error("Max retries reached — backing off")
 
@@ -192,7 +207,7 @@ class TwitterPostScraper(IWebScraper):
             while retries <= self.MAX_RETRIES:
                 logger.info(f"+---- Scraping posts for user {username} ----")
                 try:
-                    posts     = self.parser.scrape_post(username, limit)
+                    posts     = self.parser.scrape_posts(username, limit)
                     if not posts:
                         logger.info(f"No posts found for user {username}")
                         break
@@ -200,7 +215,7 @@ class TwitterPostScraper(IWebScraper):
                     formatted_posts = [self.formatter.entry_format(post) for post in posts]
 
                     for formatted in formatted_posts:
-                        dump_to_parquet(formatted, Config.TWITTER_DATA_DIR, file_name)
+                        dump_to_parquet(formatted.to_dict(), Config.TWITTER_DATA_DIR, file_name)
                     
                     logger.info(f"Parquet dump succesfully for user {username}")
                         
@@ -219,17 +234,7 @@ class TwitterPostScraper(IWebScraper):
                 except Exception as err:
                     retries += 1
                     self._handle_retry(err,  retries)
+
         if is_uploaded:
             upload_to_dls(Config.TWITTER_DATA_DIR, file_name)
             clean_file(Config.TWITTER_DATA_DIR, file_name)
-
-    def _reset_parser(self):
-        try:
-            if self.parser:
-                self.parser.__exit__(None, None, None)
-        except Exception:
-            pass
-
-        logger.warning("Reinitializing TwitterParser (new session)")
-        self.parser = TwitterParser(run_in_local=True)
-        self.parser.login(Config.TWITTER_EMAIL, Config.TWITTER_PASSWORD)

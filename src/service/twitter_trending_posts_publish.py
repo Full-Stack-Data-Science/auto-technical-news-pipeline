@@ -4,14 +4,14 @@ from pathlib import Path
 from random import randint
 from datetime import datetime, timedelta, timezone
 
-from storage.adls_client import ADLSClient
-from storage.posts_reader import PostRawReader
+from common.storage.adls_client import ADLSClient
+from common.storage.posts_reader import PostRawReader
 from common.config import Config
 from common.utils import render_hashtags_from_topic
 from fsds.meme_poster import MemePoster
 from fsds.session_cookies import get_session_cookies
-from llm.use_cases import summerize_X_posts
-from llm.gpt_client import ChatGPTClient
+from post_writer.llm.use_cases import summerize_X_posts
+from post_writer.llm.gpt_client import ChatGPTClient
 
 adls = ADLSClient(Config.STORAGE_ACCOUNT_NAME, Config.STORAGE_ACCOUNT_KEY, Config.FILE_SYSTEM_NAME)
 reader = PostRawReader(adls, "twitter/raw")

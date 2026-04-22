@@ -1,5 +1,5 @@
 from transformers import pipeline
-from models.labels import BINARY_LABELS, LABEL_DEFINITIONS
+from post_writer.models.labels import BINARY_LABELS, LABEL_DEFINITIONS
 
 from common.utils import setup_logging
 import logging
