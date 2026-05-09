@@ -13,6 +13,10 @@
     - [Network of Influencers](#network-of-influencers)
     - [Run the Scraper Locally](#run-the-scraper-locally)
     - [Run the New Post Detection Service](#run-the-new-post-detection-service)
+- [Running Tests](#running-tests)
+  - [Environment Setup](#environment-setup)
+  - [Unit Tests](#unit-tests)
+  - [Integration Tests](#integration-tests)
 - [Project structure](#project-structure)
 - [Architecture Diagram](#architecture-diagram)
   - [Scraping Service (Producer Layer)](#scraping-service-producer-layer)
@@ -232,6 +236,60 @@ Linkedin post scraper provides the following methods:
 --data: Path to file saving the predefined Linkedin hot posts
 --posts: Define the number of posts to scrape
 --no-upload: Define whether to save the scraped posts locally or on data lake.
+```
+
+# Running Tests
+
+## Environment setup
+
+Before running any test, export these two variables so Python can resolve local modules and tests can locate their data fixtures:
+
+```bash
+export PYTHONPATH="${PYTHONPATH}:./src"
+export PROJECT_ROOT="./test"
+```
+
+## Unit tests
+
+Unit tests have **no external dependencies** — they do not require Chrome, internet access, cloud credentials, or the ML model. The zero-shot classifier is mocked wherever it appears.
+
+Run the full unit suite:
+```bash
+pytest test/unit/ -v
+```
+
+Run a single test file:
+```bash
+pytest test/unit/test_post_classification.py -v
+pytest test/unit/test_celeb_graph.py -v
+pytest test/unit/test_utils.py -v
+```
+
+Run a single test class or test case:
+```bash
+# All tests in a class
+pytest test/unit/test_post_classification.py::TestPostClassifierZeroShotMulti -v
+
+# One specific case
+pytest test/unit/test_post_classification.py::TestPostClassifierZeroShotMulti::test_two_labels_when_scores_within_margin -v
+```
+
+Use `-k` to filter by name substring across all files:
+```bash
+pytest test/unit/ -k "ops" -v
+```
+
+## Integration tests
+
+Integration tests drive a real Chrome browser and make live network requests. They require:
+- A valid authenticated Chrome profile (see [Create a Persistent Chrome User Profile](#create-a-persistent-chrome-user-profile))
+- Internet access to X / LinkedIn
+- Chrome fully closed before running (`pkill -9 chrome`)
+
+```bash
+pytest test/intergration/test_twitter_post_extractor.py -v
+pytest test/intergration/test_linkedin_post_extractor.py -v
+pytest test/intergration/test_linkedin_connection_extractor.py -v
 ```
 
 # Project structure

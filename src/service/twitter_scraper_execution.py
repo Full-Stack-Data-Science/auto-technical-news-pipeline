@@ -3,9 +3,9 @@ import logging
 import sys
 from pathlib import Path
 
-from network.graph import build_nx_graph
-from network.relation import load_relationship_model_from_json
-from scraping.twitter.twitter_scraper import TwitterPostScraper
+from celeb_graph.graph.builder import build_graph
+from celeb_graph.io.json_loader import load_from_json
+from post_scraper.twitter.twitter_scraper import TwitterPostScraper
 from common.utils import setup_logging
 
 setup_logging()
@@ -35,9 +35,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def load_graph(data_path: Path):
     logger.info(f"Loading relationship model from: {data_path}")
-    relationships_model = load_relationship_model_from_json(data_path)
+    relationships_model = load_from_json(data_path)
 
-    nx_graph = build_nx_graph(relationships_model)
+    nx_graph = build_graph(relationships_model)
     logger.info("Twitter AI Graph built successfully")
     logger.info(f"  Users         :  {nx_graph.number_of_nodes()}")
     logger.info(f"  Relationships :  {nx_graph.number_of_edges()}")

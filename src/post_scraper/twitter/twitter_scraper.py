@@ -21,7 +21,7 @@ from celeb_graph.models.relationship import RelationshipModel
 from common.messaging.service_bus_publisher import ServiceBusPublisher
 from typing import Dict, Any, List
 
-from post_writer.models.classify import classify_text
+from post_writer.post_classification import classify_text
 
 
 setup_logging()

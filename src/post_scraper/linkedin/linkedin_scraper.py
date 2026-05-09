@@ -262,7 +262,7 @@ class LinkedInPostFormatter:
             return None
 
         try:
-            from post_writer.models.classify import classify_text
+            from post_writer.post_classification import classify_text
         except Exception as e:
             self._zero_shot_import_failed = True
             logger.warning(f"Zero-shot classifier unavailable, falling back to rules: {e}")

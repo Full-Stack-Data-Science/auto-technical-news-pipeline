@@ -28,18 +28,15 @@ LABEL_DEFINITIONS = {
         "such as supervised, unsupervised, or reinforcement learning that are not specific "
         "to generative foundation models."
     ): "Machine Learning",
-
     (
         "MLOps and Orchestration, focusing on operational systems for machine learning, "
         "including training pipelines, deployment, monitoring, CI/CD, infrastructure, "
         "and reliability engineering. Excludes model research, scaling laws, or training science."
     ): "Orchestration",
-
     (
         "Data Analytics, focusing on data analysis, reporting, dashboards, statistics, "
         "and business intelligence rather than machine learning model development."
     ): "Data Analytics",
-
     (
         "Robotics, focusing on AI systems for robotic perception, control, motion planning, "
         "and automation in physical or autonomous robotic systems."
