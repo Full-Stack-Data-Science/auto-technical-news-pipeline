@@ -1,14 +1,13 @@
 | Title | Description |
-|-------------|--------|
-| Data model definement                      | Define and implement a common data model (data class) with clearly defined attributes for post entities across the codebase to improve maintainability, consistency, and robustness.|
-| Scrape any K latest posts                  | The twitter scraper service currently supports fetching only 3–6 recent posts per user. Extend the scraper module to support an arbitrary number (K) of latest posts per user, with configurable limits and performance safeguards.|
-| Full new post detection pipeline           | Currentmy functionality to emit new post event is already done to emit to Azure service bus. Need to implement a fully generic consumer service within an event-driven architecture to process new post events and publish curated content to downstream platforms (e.g., social media, websites).|
-| Categorize tech/non-tech post              | Enhance the post classification model. The current false negative (FN) rate is high, causing quality technical posts to be missed. Improve accuracy and expand categorization into more precise technical domains. Current research is available in `notebooks/classification_technical_post.ipynb`.|
-| Post Summerization                         | Improve or fully implement the post summarization pipeline in the consumer service. Current experimentation is available in `notebooks/post_summarization.ipynb`.|
-| Dynamic Influencer Graph                   | The current influencer network graph is static. Make it dynamic by updating relationships based on metrics such as follower count, engagement rate, and activity level. The goal is to surface higher-quality trending posts and automatically remove inactive authors. |
-| Fix engagement bias                        | Total Engagement is biased toward famous influencers, high follower counts, and older posts that accumulate engagement over time. We need to address these issues. Suggested metric: Total Engagement / Number of Posts |
-| Topic tracking (trend vs. previous period) | Implement time-based topic tracking to measure growth instead of just total engagement. Example: “Generative AI +180% vs. last week.” This enables momentum-based trend detection.. |
-| Use author profile images (if helpful)     | We would love to intergrate userful image profile |
-| Dockerternize scrape service               | Containerize the scraper service to remove the current dependency on manual VM-based authentication for X (Twitter) / LinkedIn scraping => Improve CD pipeline|
-| Evaluate Alternative Scraping Frameworks   | The current Selenium WebDriver approach may be blocked by anti-bot systems. Evaluate alternatives such as undetected-chromedriver or its successor (e.g., https://github.com/ultrafunkamsterdam/nodriver ) to improve reliability and performance.|
-| IaC Improvement                            | Propose and implement an Infrastructure as Code (IaC) strategy to automate deployment of all services in the cloud environment.|
+|---|---|
+| Data model definition | Define and implement a common data model (dataclass) with clearly defined attributes for post entities across the codebase to improve maintainability, consistency, and robustness. |
+| Scrape any K latest posts | The Twitter scraper currently supports fetching only 3–6 recent posts per user. Extend it to support an arbitrary K with configurable limits and performance safeguards. |
+| Full new post detection pipeline | The Service Bus publisher is in place. Implement a fully generic consumer service within an event-driven architecture to process new-post events and publish curated content to downstream platforms. |
+| Improve tech/non-tech classification | The current false-negative rate is high, causing quality technical posts to be missed. Improve accuracy and expand categorization into more precise technical domains. Research available in `notebooks/classification/`. |
+| Post summarization | Improve the post summarization pipeline in the consumer service. Current experimentation is available in `notebooks/`. |
+| Dynamic influencer graph | The influencer network graph is static. Make it dynamic by updating relationships based on follower count, engagement rate, and activity level to surface higher-quality trending posts and remove inactive authors. |
+| Fix engagement bias | Total engagement is biased toward famous influencers and older posts that accumulate over time. Suggested metric: total engagement / number of posts. |
+| Topic trend tracking | Implement time-based topic tracking to measure growth instead of just total engagement. Example: "Generative AI +180% vs. last week." Enables momentum-based trend detection. |
+| Author profile images | Integrate author profile images into published summaries where helpful. |
+| Dockerize scraper service | Fully containerize the scraper service to eliminate the dependency on manual VM-based authentication for X (Twitter) / LinkedIn. |
+| Evaluate alternative scraping frameworks | The Selenium WebDriver approach may be blocked by anti-bot systems. Evaluate alternatives such as `undetected-chromedriver` or `nodriver` to improve reliability. |
