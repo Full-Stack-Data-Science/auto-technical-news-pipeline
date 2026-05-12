@@ -1,0 +1,52 @@
+# Copy this file to terraform.tfvars and fill in your values.
+# Never commit terraform.tfvars — it contains secrets.
+
+# ---------------------------------------------------------------------------
+# Required
+# ---------------------------------------------------------------------------
+resource_group_name          = "rg-tech-news-pipeline"
+log_analytics_workspace_name = "law-tech-news"
+acr_name                     = "technewsacr001"          # must be globally unique
+
+# Credentials — alternatively export as TF_VAR_* env vars in CI
+twitter_credentials = {
+  email    = "your-twitter@example.com"
+  password = "changeme"
+}
+
+# Discord webhook for publishing post summaries
+discord_webhook_url = "https://discord.com/api/webhooks/..."
+
+# Use at least one LLM key; the app falls back gracefully if one is empty
+openai_api_key    = ""          # sk-...
+anthropic_api_key = "sk-ant-..." # optional
+
+# ---------------------------------------------------------------------------
+# Optional overrides (defaults shown)
+# ---------------------------------------------------------------------------
+acr_sku                        = "Basic"
+storage_account_name           = "technewsdlake001"
+storage_sku                    = "Standard_LRS"
+storage_container_name         = "bronze"
+container_app_environment_name = "cae-scraper-jobs"
+
+twitter_job = {
+  name          = "twitter-scraper-job"
+  image_name    = "twitter-scraper"
+  image_tag     = "latest"
+  cron_schedule = "0 */6 * * *"   # every 6 hours
+}
+
+linkedin_job = {
+  name          = "linkedin-scraper-job"
+  image_name    = "linkedin-scraper"
+  image_tag     = "latest"
+  cron_schedule = "0 */8 * * *"   # every 8 hours
+  command       = []
+}
+
+publisher_job_name        = "post-publisher-job"
+publisher_container_image = "post-publisher:latest"
+servicebus_namespace_name = "post-events-ns"
+servicebus_topic_name     = "new-post-events"
+servicebus_subscription_name = "logger"

@@ -1,5 +1,4 @@
 import os
-from dotenv import load_dotenv
 
 class Config:    
     PROJECT_ROOT = os.getenv("PROJECT_ROOT", ".")
@@ -31,13 +30,11 @@ class Config:
     STORAGE_ACCOUNT_KEY =os.getenv("STORAGE_ACCOUNT_KEY")
     FILE_SYSTEM_NAME=os.getenv("FILE_SYSTEM_NAME", "bronze")
 
-    FSDS_URL            =os.getenv("FSDS_URL", "https://api.fullstackdatascience.com")
-    FSDS_USERNAME=os.getenv("FSDS_USERNAME")
-    FSDS_PASSWORD=os.getenv("FSDS_PASSWORD")
-
     OPENAI_API_KEY=os.getenv("OPENAI_API_KEY")
-    OPENAI_ENDPOINT ="https://fdry-code-review-dev.cognitiveservices.azure.com/openai/v1/"
-    TECHNICAL_CHANNEL_ID=os.getenv('TECHNICAL_CHANNEL_ID', 'e0eea093-9d1c-4364-bb7b-e8d17d89e71b')
+    OPENAI_ENDPOINT=os.getenv("OPENAI_ENDPOINT")
+    ANTHROPIC_API_KEY=os.getenv("ANTHROPIC_API_KEY")
+
+    DISCORD_WEBHOOK_URL=os.getenv("DISCORD_WEBHOOK_URL")
 
     SERVICE_BUS_CONNECTION_STRING=os.getenv("SERVICE_BUS_CONNECTION_STRING")
     TWITTER_NEW_POST_TOPIC=os.getenv("TWITTER_NEW_POST_TOPIC", "new-post-events")

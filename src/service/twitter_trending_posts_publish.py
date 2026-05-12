@@ -1,139 +1,94 @@
-import pandas as pd
-import json
+import argparse
+import logging
+import sys
+from datetime import datetime, timedelta
 from pathlib import Path
 from random import randint
-from datetime import datetime, timedelta, timezone
 
-from common.storage.adls_client import ADLSClient
-from common.storage.posts_reader import PostRawReader
+import pandas as pd
+
 from common.config import Config
-from common.utils import render_hashtags_from_topic
-from fsds.meme_poster import MemePoster
-from fsds.session_cookies import get_session_cookies
-from post_writer.llm.use_cases import summerize_X_posts
-from post_writer.llm.gpt_client import ChatGPTClient
+from common.utils import setup_logging
+from post_writer.llm.claude_client import ClaudeClient
+from post_writer.llm.use_cases import summerize_posts
+from post_writer.publisher.cache import PublishedPostCache
+from post_writer.publisher.discord import DiscordPublisher
+from post_writer.publisher.ranking import clean_posts, get_trending
+from common.storage.posts_reader import TWITTER_FILENAME_PATTERN
 
-adls = ADLSClient(Config.STORAGE_ACCOUNT_NAME, Config.STORAGE_ACCOUNT_KEY, Config.FILE_SYSTEM_NAME)
-reader = PostRawReader(adls, "twitter/raw")
-openAI_client = ChatGPTClient()
+setup_logging()
+logger = logging.getLogger(__name__)
 
-ENGAGEMENT_COLS = [
-    "comments",
-    "reposts",
-    "reactions",
-    "bookmarks",
-    "views",
-]
-CACHE_PATH = Path("published_posts.json")
+DEFAULT_BACK_DAYS = 4
+DEFAULT_CACHE_PATH = "published_posts.json"
+DEFAULT_DATA_DIR = Path("data/raw/twitter")
 
-def clean_x_posts(df: pd.DataFrame, back_days: int) -> pd.DataFrame:
-    df = df.copy()
-    df["date"] = pd.to_datetime(df["date"], errors="coerce", utc=True)
-    df = df[df["date"].notna()]
 
-    today = pd.Timestamp.utcnow().date()
-    started_day= today - pd.Timedelta(days=back_days)
-
-    df = df[
-        (df["date"].dt.date >= started_day) &
-        (df["date"].dt.date <= today)
-    ]
-
-    for col in ENGAGEMENT_COLS:
-        df[col] = (
-            pd.to_numeric(df[col], errors="coerce")
-            .fillna(0)
-            .astype("int64")
-        )
-
-    df = df.drop_duplicates(
-        subset=["post_url", "author"],
-        keep="first",
+def parse_args(argv=None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Publish trending Twitter posts to Discord.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-
-    df["total_engagement"] = df[ENGAGEMENT_COLS].sum(axis=1)
-    return df.reset_index(drop=True)
-
-
-def get_post_trending(df: pd.DataFrame,
-                      published_post: set,
-                      k: int = 2):
-    df_filtered = df[df["is_tech_related"] == True]
-    df_filtered = df_filtered[
-        ~df_filtered["post_url"].isin(published_post)
-    ]
-    top_trending_posts = df_filtered.nlargest(
-        k, "total_engagement"
-    )
-
-    return top_trending_posts
-
-def publish_post_to_channel(content):
-    poster = MemePoster(get_session_cookies())
-    print(f"Content to publish : \n {content}")
-    poster.post_meme(content, Config.TECHNICAL_CHANNEL_ID)
+    parser.add_argument("--back-days", type=int, default=DEFAULT_BACK_DAYS,
+                        help="Number of past days to consider.")
+    parser.add_argument("--cache", type=Path, default=DEFAULT_CACHE_PATH,
+                        help="Path to the published-posts cache file.")
+    parser.add_argument("--data-dir", type=Path, default=DEFAULT_DATA_DIR,
+                        help="Local directory containing raw Twitter parquet files.")
+    return parser.parse_args(argv)
 
 
-def dump_to_cache(trending_posts, back_days):
-    now = datetime.now(timezone.utc)
-    cutoff =  now - timedelta(days=back_days)
-    
-    if CACHE_PATH.exists():
-        with open(CACHE_PATH, "r") as f:
-            cache = json.load(f)
-    else:
-        cache = {}
-    
-    pruned_cache = {}
-    for url, ts in cache.items():
-        try:
-            ts_dt = datetime.fromisoformat(ts)
-            if ts_dt >= cutoff:
-                pruned_cache[url] = ts
-        except:
+def read_local_posts(data_dir: Path, back_days: int) -> pd.DataFrame:
+    matched = []
+    for f in data_dir.glob("*.parquet"):
+        m = TWITTER_FILENAME_PATTERN.search(f.name)
+        if not m:
             continue
-    
-    # dump new posts in disk
-    now_iso = now.isoformat()
-    for url in trending_posts["post_url"]:
-        pruned_cache[url] = now_iso
+        try:
+            file_dt = datetime.strptime(f"{m.group(1)}{m.group(2)}", "%Y%m%d%H%M%S")
+        except ValueError:
+            continue
+        matched.append((f, file_dt))
 
-    with open(CACHE_PATH, "w") as f:
-        json.dump(pruned_cache, f, indent=2)
+    if not matched:
+        return pd.DataFrame()
 
-def read_from_cache():
-    if not CACHE_PATH.exists():
-        return set()
+    newest_dt = max(dt for _, dt in matched)
+    cutoff = newest_dt.date() - timedelta(days=back_days)
+    recent = [(f, dt) for f, dt in matched if dt.date() >= cutoff]
+    recent.sort(key=lambda x: x[1], reverse=True)
 
-    with open(CACHE_PATH, "r") as f:
-        data = json.load(f)
-    
-    return set(data.keys())
+    dfs = [pd.read_parquet(f) for f, _ in recent]
+    return pd.concat(dfs, ignore_index=True) if dfs else pd.DataFrame()
 
-def twitter_post_publish(back_days: int):
-    df = reader.read_recent_days(back_days)
-    df_clean = clean_x_posts(df, back_days)
-    published_post = read_from_cache()
-    
-    number_of_post = randint(1, 4)
-    trending_posts = get_post_trending(df_clean, published_post, number_of_post)
-    dump_to_cache(trending_posts, back_days)
-    if not trending_posts.empty:
-        html_output = summerize_X_posts(openAI_client, trending_posts)
 
-        html = html_output
-        for i in range(len(trending_posts)):
-            hashtag_html = render_hashtags_from_topic(
-                list(trending_posts.iloc[i].topic)
-            )
-            html = html.replace(
-                f"<p>{{HASHTAGS_{i + 1}}}</p>",
-                hashtag_html
-            )
+def main(argv=None) -> int:
+    args = parse_args(argv)
+    cache = PublishedPostCache(args.cache)
+    publisher = DiscordPublisher(Config.DISCORD_WEBHOOK_URL)
+    llm_client = ClaudeClient() if Config.ANTHROPIC_API_KEY else None
+    if llm_client is None:
+        logger.info("No LLM API key configured — using plain-text formatter.")
 
-        publish_post_to_channel(html)
-    else:
-        print("No hot technical posts today")
+    try:
+        df = read_local_posts(args.data_dir, args.back_days)
+        df_clean = clean_posts(df, args.back_days)
+        published = cache.read()
+        trending = get_trending(df_clean, published, k=randint(1, 4))
+
+        if trending.empty:
+            logger.info("No trending technical posts found.")
+            return 0
+
+        cache.write(trending["post_url"], args.back_days)
+        summary = summerize_posts(llm_client, trending)
+        publisher.publish(summary, trending)
+    except Exception:
+        logger.exception("Publisher failed")
+        return 1
+
+    return 0
+
 
 if __name__ == "__main__":
-    twitter_post_publish(4)
+    sys.exit(main())
