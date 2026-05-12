@@ -40,7 +40,7 @@ The pipeline is designed to be extensible — currently supporting X (Twitter), 
 ```
 .
 ├── analytics/                     # SQL views for Azure Synapse (bronze → silver layer)
-│   └── synapse_views/
+│   └── sql_queries/
 ├── data/                          # Local data (git-ignored in production)
 │   ├── influencer/                # Influencer config JSON files
 │   └── raw/                       # Scraped Parquet output (twitter/, linkedin/)
