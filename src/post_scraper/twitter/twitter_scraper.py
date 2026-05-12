@@ -84,51 +84,48 @@ class TwitterPostScraper(IWebScraper):
     """
     Scrapes the latest post for each user in a relationship graph.
     """
-    RETRY_SLEEP = 5 * 60      # 5 minutes
+    RETRY_SLEEP = 5 * 60
     MAX_RETRIES = 1
-    HUMAN_DELAY_MIN = 10      # seconds
+    HUMAN_DELAY_MIN = 10
     HUMAN_DELAY_MAX = 15
-    
-    def __init__(self, 
-                 relations: RelationshipModel, 
-                 run_in_test: bool = False) -> None:
-        self.run_in_test = run_in_test 
-        self.relations = relations
-        
-        self.driver_manager = DriverManager(headless=self.run_in_test)
-        self.driver_manager.__enter__()
 
-        parser = TwitterParser(self.driver_manager.get())
-        formatter = TwitterPostFormatter()
+    def __init__(self, relations: RelationshipModel, run_in_test: bool = False) -> None:
+        self.run_in_test = run_in_test
+        self.relations = relations
         self.cache = PostCache("post_cache.json")
-        
         self.publisher = ServiceBusPublisher(
-            conn_str= Config.SERVICE_BUS_CONNECTION_STRING,
-            topic_name= Config.TWITTER_NEW_POST_TOPIC
+            conn_str=Config.SERVICE_BUS_CONNECTION_STRING,
+            topic_name=Config.TWITTER_NEW_POST_TOPIC,
         )
-        super().__init__(parser, formatter)
-    
+        self.driver_manager = DriverManager(
+            run_in_local=True,
+            headless=run_in_test,
+            profile_directory="Profile_Twitter",
+        )
+        super().__init__(None, TwitterPostFormatter())
+
     def __enter__(self):
-        self._reset()
+        self.driver_manager.__enter__()
+        self._setup_session()
         return self
 
     def __exit__(self, exc_type, exc, tb):
         self.driver_manager.__exit__(exc_type, exc, tb)
 
+    def _setup_session(self):
+        """Login non-headless, then switch to headless for scraping."""
+        if not self.run_in_test:
+            self.driver_manager.reset(headless=False)
+            TwitterSession(self.driver_manager.get()).login(
+                Config.TWITTER_EMAIL, Config.TWITTER_PASSWORD
+            )
+            self.driver_manager.reset(headless=True)
+
+        self.parser = TwitterParser(self.driver_manager.get())
+
     def _reset(self):
         logger.warning("Resetting full session...")
-
-        self.driver_manager.reset(headless=False)
-        self.session = TwitterSession(self.driver_manager.get())
-
-        if not self.run_in_test:
-            self.session.login(
-                Config.TWITTER_EMAIL,
-                Config.TWITTER_PASSWORD
-            )
-            
-        self.driver_manager.reset(headless=True)
-        self.parser = TwitterParser(self.driver_manager.get())
+        self._setup_session()
     
     def _handle_retry(self, err: Exception, retries: int):
         logger.warning(f"Unknown error {err}")
