@@ -1,5 +1,4 @@
 import os
-from dotenv import load_dotenv
 
 class Config:    
     PROJECT_ROOT = os.getenv("PROJECT_ROOT", ".")
@@ -32,7 +31,8 @@ class Config:
     FILE_SYSTEM_NAME=os.getenv("FILE_SYSTEM_NAME", "bronze")
 
     OPENAI_API_KEY=os.getenv("OPENAI_API_KEY")
-    OPENAI_ENDPOINT ="https://fdry-code-review-dev.cognitiveservices.azure.com/openai/v1/"
+    OPENAI_ENDPOINT=os.getenv("OPENAI_ENDPOINT")
+    ANTHROPIC_API_KEY=os.getenv("ANTHROPIC_API_KEY")
 
     DISCORD_WEBHOOK_URL=os.getenv("DISCORD_WEBHOOK_URL")
 
