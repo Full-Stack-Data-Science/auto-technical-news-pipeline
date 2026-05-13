@@ -276,9 +276,53 @@ Trending technical post summaries are published to a Discord channel via webhook
 
 ## Visualization
 
-The Silver layer feeds Power BI dashboards for interactive trend exploration across influencers, topics, and engagement metrics.
 
 ![Dashboard](images/analytics.png)
+
+
+LinkedIn Scraper and Twitter Scraper collect data and store it in the `bronze/` container on Azure Data Lake Storage Gen2 (ADLS2).
+The storage structure is separated by platform:
+- bronze/linkedin/
+- bronze/twitter/
+
+In **Azure Synapse Analytics (Serverless SQL Pool)**, raw data is queried using `OPENROWSET`, and SQL views are created as a transformation layer.
+
+Two **full views** are created:
+- `powerbi.linkedin`
+- `powerbi.twitter`
+
+These views:
+- Read all Parquet files from the Bronze layer.
+- Standardize data types.
+- Rename columns.
+- Deduplicate records using ROW_NUMBER()
+    - First by post identifier (using activity_id (for Linkedin) or post_url (for Twitter))
+    - Then by content (to handle reposted content)
+
+All transformations are done at query time.
+
+However, to reduce query cost and memory usage, **30-day views** are created:
+- `powerbi.linkedin_30days`
+- `powerbi.twitter_30days`
+
+These views retrieve only the last 30 days of data:
+```sql
+WHERE date >= DATEADD(DAY, -30, GETUTCDATE())
+```
+
+Power BI loads data from these 30-day views instead of the full dataset.
+
+In **Power BI**:
+1. The two 30-day views are loaded into separate tables.
+2. Each table is referenced.
+3. The referenced tables are appended into a single combined table.
+4. Additional transformations (calculated columns, measures, etc.) are applied in this combined table.
+
+Using references ensures the original source tables remain unchanged.
+
+And BOOM!
+
+![alt text](images/dashboard.png)
 
 # Cloud Deployment
 
