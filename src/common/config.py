@@ -17,10 +17,10 @@ class Config:
     PROXY_WEBPAGE  = "https://free-proxy-list.net/"
 
     # credential
-    TWITTER_EMAIL=os.getenv("TWITTER_EMAIL", "quochungtr99@gmail.com")
-    TWITTER_PASSWORD=os.getenv("TWITTER_PASSWORD", "DGWuty99@12345#")
+    TWITTER_EMAIL=os.getenv("TWITTER_EMAIL", "...")
+    TWITTER_PASSWORD=os.getenv("TWITTER_PASSWORD", "...")
     USER_NAME =os.getenv("USER_NAME")
-    LINKEDIN_EMAIL=os.getenv("LINKEDIN_EMAIL", "dangminhhust193231@gmail.com")
+    LINKEDIN_EMAIL=os.getenv("LINKEDIN_EMAIL", "...")
     LINKEDIN_PASSWORD=os.getenv("LINKEDIN_PASSWORD", "...")
     TWITTER_COOKIE_FILE=f"{COOKIE_PATH}/twitter_cookies.json"
     LINKEDIN_COOKIE_FILE =f"{COOKIE_PATH}/linkedin_cookies.json"
