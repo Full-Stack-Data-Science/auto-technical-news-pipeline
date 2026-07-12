@@ -1,0 +1,22 @@
+{
+  "karpathy": {
+    "follow": ["AndrewYNg", "ylecun", "sama", "fchollet"],
+    "mention": ["huggingface"]
+  },
+  "sama": {
+    "follow": ["karpathy", "AndrewYNg", "ylecun", "fchollet"],
+    "mention": ["OpenAI"]
+  },
+  "AndrewYNg": {
+    "follow": ["karpathy", "ylecun", "sama", "fchollet"],
+    "mention": ["GoogleDeepMind"]
+  },
+  "ylecun": {
+    "follow": ["karpathy", "AndrewYNg", "sama", "fchollet"],
+    "mention": ["huggingface"]
+  },
+  "fchollet": {
+    "follow": ["karpathy", "AndrewYNg", "ylecun", "sama"],
+    "mention": ["GoogleDeepMind"]
+  }
+}

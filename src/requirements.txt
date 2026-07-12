@@ -1,0 +1,33 @@
+networkx==3.4.2 # 21/10/2024
+matplotlib==3.9.2
+pandas==2.2.3
+requests==2.32.3
+bs4==0.0.2
+gologin==2024.9.13060353
+selenium==4.38.0
+blinker==1.6.2
+azure-storage-file-datalake==12.17.0
+transformers==4.45.2
+torch==2.5.0
+openai==1.75.0
+anthropic
+httpx==0.28.1
+python-dotenv==1.0.0
+azure-servicebus
+dotenv
+pandas
+pyarrow
+undetected_chromedriver
+nodriver
+asyncio
+selenium-wire
+lxml
+
+
+# CI/CD purpose
+pytest
+
+# Orchestration
+apache-airflow==2.9.0
+flask-session==0.5.0
+virtualenv
